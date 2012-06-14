@@ -13,6 +13,8 @@ This experiment is described in depth in http://www2.geog.ucl.ac.uk/~plewis/eold
 
 An extra script is provided in http://www2.geog.ucl.ac.uk/~plewis/eoldas/example1.html#example-plotting-data-from-the-output-files. This shows how to make plots of the output using Python and Matplotlib. The required script is example1plot.py. This script will produce a plot stored under the "images" directory. It should be compared to the one on the user's manual. Similarly for solve_eoldas_identity1.py, you can use example1plot1.py to plot figures simular to those in the user's guide. Similarly, you can try solve_eoldas_identity2.py and example1plot2.py.
 
+To plot the Hessian, as in http://www2.geog.ucl.ac.uk/~plewis/eoldas/example1.html#interfacing-a-little-more-deeply-with-the-eoldas-code, you can use the script solve_eoldas_identity_a.py. It will save the plot in output/IHessianNDVI_expt1.png.
+
 
 
 
