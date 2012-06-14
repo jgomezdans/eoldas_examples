@@ -15,6 +15,14 @@ An extra script is provided in http://www2.geog.ucl.ac.uk/~plewis/eoldas/example
 
 To plot the Hessian, as in http://www2.geog.ucl.ac.uk/~plewis/eoldas/example1.html#interfacing-a-little-more-deeply-with-the-eoldas-code, you can use the script solve_eoldas_identity_a.py. It will save the plot in output/IHessianNDVI_expt1.png.
 
+Experiment 2
+**************
+
+The second experiment requires some real MODIS observations. These are given in ``data/modis_botswana.dat``. You will also require the configuration file ``config_files/Identity2.conf``. To produce all the plots in this section, you will need to have the ``eoldas_run.py`` executable in your path. 
 
 
+.. note::
+ 
+   The command line will need to be changed from that in the user's guide to the following::
 
+   eoldas_run.py -conf=config_files/eoldas_config.conf --conf=config_filess/Identity2.conf --calc_posterior_unc
