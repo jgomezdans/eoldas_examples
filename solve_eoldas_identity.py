@@ -125,6 +125,5 @@ if __name__ == "__main__":
     # initialise eoldas
     self = eoldas.eoldas(cmd)
     # solve DA
-    pdb.set_trace()
     self.solve(write=True)
     
