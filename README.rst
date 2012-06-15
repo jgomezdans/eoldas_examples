@@ -56,13 +56,14 @@ To plot the Hessian, as in `here <http://www2.geog.ucl.ac.uk/~plewis/eoldas/exam
 Experiment 2 (smoothing of MODIS observations)
 =====================================================
 
+.. note::
+    
+    The command line is slightly changed from that in the user's guide  (assuming you have  ``~/.local/bin/`` in your ``$PATH``. If that's not the case, prepend it to the command line)
+    
+    
 The second experiment requires some real MODIS observations. These are given in ``data/modis_botswana.dat``. You will also require the configuration file ``config_files/Identity2.conf``. To produce all the plots in this section, you will need to have the ``eoldas_run.py`` executable in your path (this will usually be ``~/.local/bin/``). ::
 
 eoldas_run.py --conf=config_files/eoldas_config.conf --conf=config_files/Identity2.conf --calc_posterior_unc
-
-.. note::
- 
-   The command line is slightly changed from that in the user's guide  (assuming you have  ``~/.local/bin/`` in your ``$PATH``. If that's not the case, prepend it to the command line)
 
 To run the other examples, do ::
 
