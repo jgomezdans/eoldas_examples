@@ -33,4 +33,10 @@ eoldas_run.py --conf=config_files/eoldas_config.conf --conf=config_files/Identit
 
 eoldas_run.py --conf=config_files/eoldas_config.conf --conf=config_files/Identity2.conf --calc_posterior_unc --operator.modelt.rt_model.model_order=2 --parameter.x.default=200,0.1 --operator.obs.y.result.filename=output/Identity/Botswana
 
+.. note::
 
+   It would appear that my version of 1/2discrete is somehow broken. In order to get this to work, you need the ``*.so`` object to be the one from Lewis' directory, ``/data/geospatial_10/plewis/src2/python/eoldas/doc/eoldaslib/rtmodel_ad_trans1.so``.
+
+.. todo::
+
+   sort 1/2discrete out. It ought to work, but maybe there are issues to do with compiler flags etc.
