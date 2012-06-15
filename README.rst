@@ -37,6 +37,10 @@ Simply, download the relevant code from `github.com <https://github.com/jgomezda
     
 This will install things in ``~/.local/lib`` and ``~/.local/bin``. The latter might be added to your ``$PATH`` to gain access to ``eoldas_run.py``.
     
+Installing the example files
+******************************
+
+The examples from the user's guide have been revamped. All the files (config and ancillary data files) are in *this* github repository. Once the above are all installed, you can download them (click on the icon that says "ZIP" towards the top left of the page), unzip the resulting file somewhere, and run the examples from this new directory.
 
 
 Experiment 1 ( Savitzky-Golay smoothing)
