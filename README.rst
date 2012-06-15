@@ -33,6 +33,20 @@ eoldas_run.py --conf=config_files/eoldas_config.conf --conf=config_files/Identit
 
 eoldas_run.py --conf=config_files/eoldas_config.conf --conf=config_files/Identity2.conf --calc_posterior_unc --operator.modelt.rt_model.model_order=2 --parameter.x.default=200,0.1 --operator.obs.y.result.filename=output/Identity/Botswana
 
+Experiment 3
+**************
+
+Radiative transfer modelling for optical remote sensing. In this experiment, we will use the semidiscrete model to invert and forward model real observations from spaceborne sensors. The first experiment gets a single observation from MERIS (15 bands in the visible/near-infrared range), and inverts this observation. The command to run it is: ::
+
+~/.local/bin/eoldas_run.py --conf=config_files/eoldas_config.conf --conf=config_files/meris_single.conf --parameter.limits='[[232,232,1]]' --calc_posterior_unc
+
+The solution will appear in ``output/meris/``, where you can find both the text files and plots that are in the users' guide.
+
+A second example uses the results from the first, and uses the estimated state of the land surface to provide a prediction of the reflectance that would be seen by the MODIS sensor on that same day. This is then compared to the actual observations. The command is ::
+
+~/.local/bin/eoldas_run.py --conf=config_files/eoldas_config.conf --conf=config_files/meris_single.conf --parameter.limits='[[232,232,1]]' --passer --conf=config_files/modis_single.conf 
+
+
 .. note::
 
    It would appear that my version of 1/2discrete is somehow broken. In order to get this to work, you need the ``*.so`` object to be the one from Lewis' directory, ``/data/geospatial_10/plewis/src2/python/eoldas/doc/eoldaslib/rtmodel_ad_trans1.so``.
@@ -40,3 +54,4 @@ eoldas_run.py --conf=config_files/eoldas_config.conf --conf=config_files/Identit
 .. todo::
 
    sort 1/2discrete out. It ought to work, but maybe there are issues to do with compiler flags etc.
+
