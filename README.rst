@@ -57,7 +57,7 @@ An extra script is provided in `here <http://www2.geog.ucl.ac.uk/~plewis/eoldas/
 
 To plot the Hessian, as in `here <http://www2.geog.ucl.ac.uk/~plewis/eoldas/example1.html#interfacing-a-little-more-deeply-with-the-eoldas-code>`_, you can use the script ``solve_eoldas_identity_a.py``. It will save the plot in ``output/IHessianNDVI_expt1.png``.
 
-Experiment 2 (smoothing of MODIS observations)
+Experiment 3 (smoothing of MODIS observations)
 =====================================================
 
 .. note::
@@ -65,19 +65,22 @@ Experiment 2 (smoothing of MODIS observations)
    The command line is slightly changed from that in the user's guide  (assuming you have  ``~/.local/bin/`` in your ``$PATH``. If that's not the case, prepend it to the command line)
     
     
-The second experiment requires some real MODIS observations. These are given in ``data/modis_botswana.dat``. You will also require the configuration file ``config_files/Identity2.conf``. To produce all the plots in this section, you will need to have the ``eoldas_run.py`` executable in your path (this will usually be ``~/.local/bin/``). ::
+The `third experiment <http://www2.geog.ucl.ac.uk/~plewis/eoldas/example1a.html>`_requires some real MODIS observations. These are given in ``data/modis_botswana.dat``. You will also require the configuration file ``config_files/Identity2.conf``. To produce all the plots in this section, you will need to have the ``eoldas_run.py`` executable in your path (this will usually be ``~/.local/bin/``). ::
 
     eoldas_run.py --conf=config_files/eoldas_config.conf --conf=config_files/Identity2.conf --calc_posterior_unc
 
+The output of this experiment will come out in ``output/Identity`` (with names such as ``Botswana_fwd.params2.plot.y.png`` or ``NDVI_Identity1.params.plot.x.png``)
 To run the other examples, do ::
 
     eoldas_run.py --conf=config_files/eoldas_config.conf --conf=config_files/Identity2.conf --calc_posterior_unc --operator.modelt.rt_model.model_order=2 --parameter.x.default=5000,0.1 --operator.obs.y.result.filename=output/Identity/Botswana_fwd.params2 --parameter.result.filename=output/Identity/MODIS_botswana.params2
     eoldas_run.py --conf=config_files/eoldas_config.conf --conf=config_files/Identity2.conf --calc_posterior_unc --operator.modelt.rt_model.model_order=2 --parameter.x.default=200,0.1 --operator.obs.y.result.filename=output/Identity/Botswana
+    
+Check the actual command line to see where output results are going to come out.
 
-Experiment 3 (RT observation operators )
+Experiment 4 (RT observation operators )
 ================================================
 
-Radiative transfer modelling for optical remote sensing. In this experiment, we will use the semidiscrete model to invert and forward model real observations from spaceborne sensors. The first experiment gets a single observation from MERIS (15 bands in the visible/near-infrared range), and inverts this observation. The command to run it is: ::
+Radiative transfer modelling for optical remote sensing. In `this experiment <http://www2.geog.ucl.ac.uk/~plewis/eoldas/example2.html>`_, we will use the semidiscrete model to invert and forward model real observations from spaceborne sensors. The first experiment gets a single observation from MERIS (15 bands in the visible/near-infrared range), and inverts this observation. The command to run it is: ::
 
 ~/.local/bin/eoldas_run.py --conf=config_files/eoldas_config.conf --conf=config_files/meris_single.conf --parameter.limits='[[232,232,1]]' --calc_posterior_unc
 
