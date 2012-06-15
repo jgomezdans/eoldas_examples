@@ -1,3 +1,7 @@
+logig_files/
+mylogs/
+output/
+iterate.dat
 images/*
 *.py[co]
 
