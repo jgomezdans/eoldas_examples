@@ -1,6 +1,21 @@
 ====================
-eoldas_examples
+EOLDAS examples
 ====================
+
+.. contents:: :local:
+    
+    
+Installation
+=============
+
+This repository holds the code and ancillary files that are required to run the
+examples in the `EOLDAS user's guide <http://www2.geog.ucl.ac.uk/~plewis/eoldas/index.html`_. 
+
+However, we first need to install EOLDAS and any other modules that are required
+(in this case, RT codes that are distributed as independent packages).
+
+Installing the RT codes
+************************
 
 .. note::
     
@@ -15,21 +30,22 @@ eoldas_examples
         
 
 Installing eoldas
-==================
-
-    Simply, download the relevant code from `github.com <https://github.com/jgomezdans/eoldas/zipball/master>`_, unpack it, and then run the command ::
+*********************
+Simply, download the relevant code from `github.com <https://github.com/jgomezdans/eoldas/zipball/master>`_, unpack it, and then run the command ::
     
     python setup.py install --user
     
-    This will install things in ``~/.local/lib`` and ``~/.local/bin``. The latter might be added to your ``$PATH`` to gain access to ``eoldas_run.py``.
+This will install things in ``~/.local/lib`` and ``~/.local/bin``. The latter might be added to your ``$PATH`` to gain access to ``eoldas_run.py``.
+    
+
 
 Experiment 1 ( Savitzky-Golay smoothing)
-***************************************************
+==============================================
 
 The first example (in http://www2.geog.ucl.ac.uk/~plewis/eoldas/eoldas_guide.html) runs a Savitzky-Golay filter over some MODIS NDVI data. The script is ``savitzy_golay.py``, and it requires the file ``data/FuentesAndalucia_MOD09A1.txt`` that holds the data. You run the script by issuing the command ``python savitzky_golay.py``. This will pop a window, that when closed will save the plot to the images directory (this directory will be created if it doesn't exist). This plot should correspond to http://www2.geog.ucl.ac.uk/~plewis/eoldas/_images/golay.png
 
 Experiment 2 (EOLDAS with an identity operator)
-*************************************************
+====================================================
 
 This experiment is described in depth in http://www2.geog.ucl.ac.uk/~plewis/eoldas/example1.html. It requires two configuration files, stored in config_files: Identity.conf and eoldas_config.conf. It also requires a datafile in data/Identity/random_ndvi1.dat. The script that uses these files is solve_eoldas_identity.py. The script is executed with the command ``python solve_eoldas_identity.py``. After running this, the script will create a number of directories to store logs (mylogs/), solutions and further diagnostics (these will be under output/Identity/). The results should correspond to figures in the user's guide.
 
@@ -37,8 +53,8 @@ An extra script is provided in http://www2.geog.ucl.ac.uk/~plewis/eoldas/example
 
 To plot the Hessian, as in http://www2.geog.ucl.ac.uk/~plewis/eoldas/example1.html#interfacing-a-little-more-deeply-with-the-eoldas-code, you can use the script solve_eoldas_identity_a.py. It will save the plot in output/IHessianNDVI_expt1.png.
 
-Experiment 2
-**************
+Experiment 2 (smoothing of MODIS observations)
+=====================================================
 
 The second experiment requires some real MODIS observations. These are given in ``data/modis_botswana.dat``. You will also require the configuration file ``config_files/Identity2.conf``. To produce all the plots in this section, you will need to have the ``eoldas_run.py`` executable in your path (this will usually be ``~/.local/bin/``).
 
@@ -55,13 +71,8 @@ eoldas_run.py --conf=config_files/eoldas_config.conf --conf=config_files/Identit
 
 eoldas_run.py --conf=config_files/eoldas_config.conf --conf=config_files/Identity2.conf --calc_posterior_unc --operator.modelt.rt_model.model_order=2 --parameter.x.default=200,0.1 --operator.obs.y.result.filename=output/Identity/Botswana
 
-Experiment 3
-**************
-
-        
-        
-
-    
+Experiment 3 (RT observation operators )
+================================================
 
 Radiative transfer modelling for optical remote sensing. In this experiment, we will use the semidiscrete model to invert and forward model real observations from spaceborne sensors. The first experiment gets a single observation from MERIS (15 bands in the visible/near-infrared range), and inverts this observation. The command to run it is: ::
 
@@ -83,12 +94,7 @@ eoldas_run.py --conf=config_files/eoldas_config.conf --conf=config_files/meris_s
     
 Output for MERIS will be in eg ``output/meris/MERIS_WW_1_A_1.fwd_b.plot.y.png`` whereas for MODIS it will be in ``output/modis/MODIS_WW_1_A_1.fwd_b.plot.y.png``
 
-    
+The experiment that demonstrates changing the prior definition is run like ::
 
-
-
-
-.. todo::
-
-   sort 1/2discrete out. It ought to work, but maybe there are issues to do with compiler flags etc.
+eoldas_run.py --conf=config_files/eoldas_config.conf --conf=config_files/meris_single.conf --parameter.limits='[[232,232,1]]' --conf=config_files/modis_single_c.conf 
 
