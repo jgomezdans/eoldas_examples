@@ -63,7 +63,7 @@ The second experiment requires some real MODIS observations. These are given in 
  
    The command line will need to be changed from that in the user's guide to the following (assuming you have  ``~/.local/bin/`` in your ``$PATH``) ::
 
-   eoldas_run.py --conf=config_files/eoldas_config.conf --conf=config_files/Identity2.conf --calc_posterior_unc
+eoldas_run.py --conf=config_files/eoldas_config.conf --conf=config_files/Identity2.conf --calc_posterior_unc
 
 To run the other examples, do ::
 
