@@ -81,7 +81,9 @@ Other experiments in that section are: ::
     
 eoldas_run.py --conf=config_files/eoldas_config.conf --conf=config_files/meris_single.conf --parameter.limits='[[232,232,1]]' --conf=config_files/modis_single_b.conf 
     
+Output for MERIS will be in eg ``output/meris/MERIS_WW_1_A_1.fwd_b.plot.y.png`` whereas for MODIS it will be in ``output/modis/MODIS_WW_1_A_1.fwd_b.plot.y.png``
 
+    
 
 
 
