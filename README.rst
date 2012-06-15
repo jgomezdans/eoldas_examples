@@ -1,5 +1,27 @@
+====================
 eoldas_examples
-===============
+====================
+
+.. note::
+    
+    The semidiscrete python package is a requirement for eoldas, but it would appear that my version of 1/2discrete is somehow broken. In order to get this to work, you need the ``*.so`` object to be the one from Lewis' directory, ``/data/geospatial_10/plewis/src2/python/eoldas/doc/eoldaslib/rtmodel_ad_trans1.so``. I will have to look at how this can be fixed, but in the mean time, you need to install the semidiscrete packageS as follows ::
+        
+        $ cp -r /home/ucfajlg/Data/python/semidiscrete_plethora <somewhere>
+        $ cd <somewhere>
+        $ for i in {1..4}; do cd semidiscrete$i; python setup.py install --user ; cd ..;done
+        $ cd ~/.local/lib/python2.7/site-packages/
+        $ for i in {1..4}; do cp /data/geospatial_10/plewis/src2/python/eoldas/doc/eoldaslib/rtmodel_ad_trans$((i-1)).so semidiscrete$i/ ; done
+        $ for i in {1..4}; do echo "from rtmodel_ad_trans$((i-1)) import *"| cat - semidiscrete$i/__init__.py > /tmp/out && mv /tmp/out semidiscrete$i/__init__.py;done
+        
+
+Installing eoldas
+==================
+
+    Simply, download the relevant code from `github.com <https://github.com/jgomezdans/eoldas/zipball/master>`_, unpack it, and then run the command ::
+    
+    python setup.py install --user
+    
+    This will install things in ``~/.local/lib`` and ``~/.local/bin``. The latter might be added to your ``$PATH`` to gain access to ``eoldas_run.py``.
 
 Experiment 1 ( Savitzky-Golay smoothing)
 ***************************************************
@@ -23,11 +45,11 @@ The second experiment requires some real MODIS observations. These are given in 
 
 .. note::
  
-   The command line will need to be changed from that in the user's guide to the following::
+   The command line will need to be changed from that in the user's guide to the following (assuming you have  ``~/.local/bin/`` in your ``$PATH``) ::
 
    eoldas_run.py --conf=config_files/eoldas_config.conf --conf=config_files/Identity2.conf --calc_posterior_unc
 
-To run the other examples, do
+To run the other examples, do ::
 
 eoldas_run.py --conf=config_files/eoldas_config.conf --conf=config_files/Identity2.conf --calc_posterior_unc --operator.modelt.rt_model.model_order=2 --parameter.x.default=5000,0.1 --operator.obs.y.result.filename=output/Identity/Botswana_fwd.params2 --parameter.result.filename=output/Identity/MODIS_botswana.params2
 
@@ -35,6 +57,11 @@ eoldas_run.py --conf=config_files/eoldas_config.conf --conf=config_files/Identit
 
 Experiment 3
 **************
+
+        
+        
+
+    
 
 Radiative transfer modelling for optical remote sensing. In this experiment, we will use the semidiscrete model to invert and forward model real observations from spaceborne sensors. The first experiment gets a single observation from MERIS (15 bands in the visible/near-infrared range), and inverts this observation. The command to run it is: ::
 
@@ -46,10 +73,18 @@ A second example uses the results from the first, and uses the estimated state o
 
 ~/.local/bin/eoldas_run.py --conf=config_files/eoldas_config.conf --conf=config_files/meris_single.conf --parameter.limits='[[232,232,1]]' --passer --conf=config_files/modis_single.conf 
 
+Other experiments in that section are: ::
 
-.. note::
+~/.local/bin/eoldas_run.py --conf=config_files/eoldas_config.conf --conf=config_files/meris_single.conf --parameter.limits='[[232,232,1]]' --passer --conf=config_files/modis_single_a.conf 
 
-   It would appear that my version of 1/2discrete is somehow broken. In order to get this to work, you need the ``*.so`` object to be the one from Lewis' directory, ``/data/geospatial_10/plewis/src2/python/eoldas/doc/eoldaslib/rtmodel_ad_trans1.so``.
+(the output for this will be in e.g. ``output/modis/MODIS_WW_1_A_1.fwd_a.plot.y.png``). The following experiment will be ::
+    
+eoldas_run.py --conf=config_files/eoldas_config.conf --conf=config_files/meris_single.conf --parameter.limits='[[232,232,1]]' --conf=config_files/modis_single_b.conf 
+    
+
+
+
+
 
 .. todo::
 
