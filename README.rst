@@ -104,3 +104,8 @@ The experiment that demonstrates changing the prior definition is run like ::
 
     eoldas_run.py --conf=config_files/eoldas_config.conf --conf=config_files/meris_single.conf --parameter.limits='[[232,232,1]]' --conf=config_files/modis_single_c.conf 
 
+Experiment 5 (time series assimilation using observation operator )
+===========================================================================
+
+The current experiment expands on the previous experiments by demonstrating how the smoothing constraint is applied to a problem where a complex observation operator is used to model the observations. The details of this experiment are `in this page <http://www2.geog.ucl.ac.uk/~plewis/eoldas/example3.html>`_ .
+
