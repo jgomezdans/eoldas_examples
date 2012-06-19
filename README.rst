@@ -107,7 +107,12 @@ The experiment that demonstrates changing the prior definition is run like ::
 Experiment 5 (time series assimilation using observation operator )
 ===========================================================================
 
-The current experiment expands on the previous experiments by demonstrating how the smoothing constraint is applied to a problem where a complex observation operator is used to model the observations. The details of this experiment are `in this page <http://www2.geog.ucl.ac.uk/~plewis/eoldas/example3.html>`_ . The first example can be performed by the following command ::
+The current experiment expands on the previous experiments by demonstrating how the smoothing constraint is applied to a problem where a complex observation operator is used to model the observations. The details of this experiment are `in this page <http://www2.geog.ucl.ac.uk/~plewis/eoldas/example3.html>`_ . The first example can be performed by the following command (it takes around 30-45 minutes)::
     
 ~/.local/bin/eoldas_run.py --conf=config_files/eoldas_config.conf --conf=config_files/semid_default.conf --logfile=logs/file.log --parameter.result.filename=output/gamma2/state.dat --operator.obs.y.result.filename=output/gamma2/obs.dat --parameter.x.default=2,0.99,5,0.01,0.99,0.001,0.99,0.35,1.5,1,0.001,0,0,5 --operator.obs.y.state=data/brdf_WW_1_A_1.kernelFiltered.dat
 
+You will see results appearing in ``output/gamma2``. In particular, the state that we are solving for appears in ``output/gamma2/state.dat.plot.x.png`` (for the plot) and ``output/gamma2/state.dat`` for the raw data. Also note that in this example, the posterior covariance matrix and Hessian have not been calculated.
+
+.. note::
+   
+   Here's where the hack to do several different gammas starting from a previous gamma needs to go.
