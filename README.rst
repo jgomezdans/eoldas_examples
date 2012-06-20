@@ -12,35 +12,37 @@ This repository holds the code and ancillary files that are required to run the
 examples in the `EOLDAS user's guide <http://www2.geog.ucl.ac.uk/~plewis/eoldas/index.html>`_. 
 
 However, we first need to install EOLDAS and any other modules that are required
-(in this case, RT codes that are distributed as independent packages).
-
-Installing the RT codes
-************************
-
-.. note::
+(in this case, RT codes that are distributed as independent packages). This is
+straightforward, as all these packages are python packages that can be installed
+using either ``easy_install`` or ``pip``. The installation will download and 
+install both the eoldas package, and the required RT packages. These will be 
+compiled and installed (there will be lots of compiler warning errors. These are
+normal and you should ignore them). To install using ``easy_install`` do ::
     
-    The semidiscrete python package is a requirement for eoldas, but it would appear that my version of 1/2discrete is somehow broken. In order to get this to work, you need the ``*.so`` object to be the one from Lewis' directory, ``/data/geospatial_10/plewis/src2/python/eoldas/doc/eoldaslib/rtmodel_ad_trans1.so``. I will have to look at how this can be fixed, but in the mean time, you need to install the semidiscrete packageS as follows ::
-        
-        $ cp -r /home/ucfajlg/Data/python/semidiscrete_plethora <somewhere>
-        $ cd <somewhere>
-        $ for i in {1..4}; do cd semidiscrete$i; python setup.py install --user ; cd ..;done
-        $ cd ~/.local/lib/python2.7/site-packages/
-        $ for i in {1..4}; do cp /data/geospatial_10/plewis/src2/python/eoldas/doc/eoldaslib/rtmodel_ad_trans$((i-1)).so semidiscrete$i/ ; done
-        $ for i in {1..4}; do echo "from rtmodel_ad_trans$((i-1)) import *"| cat - semidiscrete$i/__init__.py > /tmp/out && mv /tmp/out semidiscrete$i/__init__.py;done
-        
+easy_install -U eoldas --user
 
-Installing eoldas
-*********************
-Simply, download the relevant code from `github.com <https://github.com/jgomezdans/eoldas/zipball/master>`_, unpack it, and then run the command ::
-    
-    python setup.py install --user
     
 This will install things in ``~/.local/lib`` and ``~/.local/bin``. The latter might be added to your ``$PATH`` to gain access to ``eoldas_run.py``.
     
-Installing the example files
-******************************
+Installing the example files using git
+****************************************
 
-The examples from the user's guide have been revamped. All the files (config and ancillary data files) are in *this* github repository. Once the above are all installed, you can download them (click on the icon that says "ZIP" towards the top left of the page), unzip the resulting file somewhere, and run the examples from this new directory.
+The examples from the user's guide have been revamped. All the files (config and ancillary data files) are in *this* github repository. Once the above are all installed, you can either download them or *clone the repository using git*. The latter method is recommended, so you can track changes etc.
+
+Installing from the Zip file
+--------------------------------
+
+Click on the icon that says "ZIP" towards the top left of the page), unzip the resulting file somewhere, and run the examples from this new directory. 
+
+Cloning the repository
+--------------------------
+
+Make sure you have a recent version of git installed, then do ::
+    
+git clone https://github.com/jgomezdans/eoldas_examples.git
+
+If you plan to contribute to the codebase, it's recommended that you fork the repository (see `here for more information <https://help.github.com/articles/fork-a-repo>`_ 
+
 
 
 Experiment 1 ( Savitzky-Golay smoothing)
