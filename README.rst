@@ -109,6 +109,14 @@ The experiment that demonstrates changing the prior definition is run like ::
 Experiment 5 (time series assimilation using observation operator )
 ===========================================================================
 
+Experiment 5.1
+******************
+
+This experiment is the same as in the webpage, but with different initialisation methods, prior ranges etc. We hope to expand the user's guide with more comment. The experiment is contained in a single python script, ``modisDa0.py``, and can be executed by calling it as ``python modisDa0.py``.
+
+Experiment 5.2
+******************
+
 The current experiment expands on the previous experiments by demonstrating how the smoothing constraint is applied to a problem where a complex observation operator is used to model the observations. The details of this experiment are `in this page <http://www2.geog.ucl.ac.uk/~plewis/eoldas/example3.html>`_ . The first example can be performed by the following command (it takes around 30-45 minutes)::
     
 ~/.local/bin/eoldas_run.py --conf=config_files/eoldas_config.conf --conf=config_files/semid_default.conf --logfile=logs/file.log --parameter.result.filename=output/gamma2/state.dat --operator.obs.y.result.filename=output/gamma2/obs.dat --parameter.x.default=2,0.99,5,0.01,0.99,0.001,0.99,0.35,1.5,1,0.001,0,0,5 --operator.obs.y.state=data/brdf_WW_1_A_1.kernelFiltered.dat
