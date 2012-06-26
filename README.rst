@@ -22,7 +22,24 @@ normal and you should ignore them). To install using ``easy_install`` do ::
 easy_install -U eoldas --user
 
     
-This will install things in ``~/.local/lib`` and ``~/.local/bin``. The latter might be added to your ``$PATH`` to gain access to ``eoldas_run.py``.
+This will install things in ``~/.local/lib`` and ``~/.local/bin``. 
+The latter might be added to your ``$PATH`` to gain access to the main 
+executable file, ``eoldas_run.py``.
+
+Installation using pip is also possible ::
+
+pip install eoldas
+
+Note that a number of auxiliary packages are required. These are 
+usually available from a complete python installation and are:
+
+* numpy
+* scipy
+* matplotlib
+
+The optimisation package `OpenOpt <http://openopt.org/>`_ is not 
+required, but allows more flexibility in the choice of optimisation
+methods.
     
 Installing the example files using git
 ****************************************
@@ -105,6 +122,7 @@ Output for MERIS will be in eg ``output/meris/MERIS_WW_1_A_1.fwd_b.plot.y.png`` 
 The experiment that demonstrates changing the prior definition is run like ::
 
     eoldas_run.py --conf=config_files/eoldas_config.conf --conf=config_files/meris_single.conf --parameter.limits='[[232,232,1]]' --conf=config_files/modis_single_c.conf 
+    
 
 Experiment 5 (time series assimilation using observation operator )
 ===========================================================================
