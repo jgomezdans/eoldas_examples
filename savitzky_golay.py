@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import os
+
 import numpy as np
 import matplotlib.pyplot as plt
 def savitzky_golay(y, window_size, order, deriv=0):
@@ -84,7 +84,5 @@ if __name__ == "__main__":
     plt.legend(loc='best' )
     plt.grid ( True ) 
     plt.show()
-    if not os.path.exists ( "images"):
-	os.mkdir ( "images")
     plt.savefig('images/golay.png')
 

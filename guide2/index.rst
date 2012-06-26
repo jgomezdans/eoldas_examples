@@ -1,0 +1,24 @@
+.. EOLDAS user guide documentation master file, created by
+   sphinx-quickstart on Tue Jun 26 13:44:50 2012.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Welcome to EOLDAS user guide's documentation!
+=============================================
+
+Contents:
+
+.. toctree::
+   :maxdepth: 2
+
+   eoldas_guide.rst
+   example1.rst
+   example1a.rst
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+
