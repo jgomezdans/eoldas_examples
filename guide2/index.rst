@@ -13,7 +13,7 @@ Contents:
 
    eoldas_guide.rst
    example1.rst
-   example1a.rst
+   example2.rst
 
 Indices and tables
 ==================

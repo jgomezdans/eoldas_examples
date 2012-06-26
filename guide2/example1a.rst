@@ -64,7 +64,8 @@ The control variables are associated with  the observation operator, here given 
 
 To run eoldas with this configuration then all we need do is type::
 
-    eoldas_run.py --conf=config_files/eoldas_config.conf --conf=config_files/Identity2.conf --calc_posterior_unc
+    eoldas_run.py --conf=config_files/eoldas_config.conf \
+      --conf=config_files/Identity2.conf --calc_posterior_unc
 
 
 This writes the files:
@@ -106,7 +107,12 @@ boundary condition is one way to place some form of constraint at what happens w
 first order differential model will in essence perform a linear interpolation where there are no data, which is
 probably appropriate for this case. You can try changing the model order to see what happens. Run e.g.::
 
-  eoldas_run.py --conf=config_files/eoldas_config.conf --conf=config_files/Identity2.conf --calc_posterior_unc --operator.modelt.rt_model.model_order=2 --parameter.x.default=5000,0.1 --operator.obs.y.result.filename=output/Identity/Botswana_fwd.params2 --parameter.result.filename=output/Identity/MODIS_botswana.params2
+  eoldas_run.py --conf=config_files/eoldas_config.conf \
+    --conf=config_files/Identity2.conf --calc_posterior_unc \
+    --operator.modelt.rt_model.model_order=2 \
+    --parameter.x.default=5000,0.1 \
+    --operator.obs.y.result.filename=output/Identity/Botswana_fwd.params2 \
+    --parameter.result.filename=output/Identity/MODIS_botswana.params2
   
 and have a look at ``output/Identity/MODIS_botswana.params2.plot.x.png``:
 
@@ -118,7 +124,12 @@ The influence of the wraparound condition is also clear here.
 
 If we used a lower gamma, we would see some features of using a second order model::
 
-    eoldas_run.py --conf=config_files/eoldas_config.conf --conf=config_files/Identity2.conf --calc_posterior_unc --operator.modelt.rt_model.model_order=2 --parameter.x.default=200,0.1  --operator.obs.y.result.filename=output/Identity/Botswana_fwd.params3  --parameter.result.filename=output/Identity/MODIS_botswana.params3
+    eoldas_run.py --conf=config_files/eoldas_config.conf \
+      --conf=config_files/Identity2.conf --calc_posterior_unc \
+      --operator.modelt.rt_model.model_order=2 \
+      --parameter.x.default=200,0.1  \
+      --operator.obs.y.result.filename=output/Identity/Botswana_fwd.params3  \
+      --parameter.result.filename=output/Identity/MODIS_botswana.params3
     
 
 
