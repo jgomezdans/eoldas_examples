@@ -357,7 +357,7 @@ The state estimate result is in ``output/modis/MODIS_WW_1_A_1.params_a``
 
 with the graphic in
 
-.. image:: ../output/modis/MODIS_WW_1_A_1_fwd_a.plot.y.png
+.. image:: ../output/modis/MODIS_WW_1_A_1.fwd_a.plot.y.png
 
 This result is not particularly good, and if we examine the  s of the optimisation we will see a warning: ABNORMAL_TERMINATION_IN_LNSRCH. This is simly not a viable result, even though we have wider spectral sampling than for MERIS. That may be partly down to
 particular characteristoics of these samples, or it might be for example that there just isn't enough information to solve the
@@ -397,9 +397,9 @@ We can then run with both meris and modis data::
 
 In any case,  the result still does not have a good convergence, so the combination has not been a complete success.
 
-The new (combined) state estimate is in ``output/modis/MODIS_WW_1_A_1.params_b``:
+The new (combined) state estimate is in ``output/modis/MODIS_MODIS_WW_1_A_1.params_b``:
 
-.. literalinclude:: ../output/modis/MODIS_WW_1_A_1.params_b
+.. literalinclude:: ../output/modis/MODIS_MODIS_WW_1_A_1.params_b
 
 The new ``xlai`` value is 0.435037 with a standard deviation of 0.000730. This corresponds to a LAI of 1.66 (confidence interval 1.58 to 
 1.66). The ``xkab`` value though is 0.958366 
@@ -473,7 +473,7 @@ We run now with::
 
 Now, we get convergence, with the results in ``output/modis/MODIS_WW_1_A_1.params_c``:
 
-.. literalinclude:: ../output/modis/MODIS_WW_1_A_1.params_c
+.. literalinclude:: ../output/modis/MODIS_MODIS_WW_1_A_1.params_c
 
 One particular thing to note here is that *all* of the uncertainties are now less that 0.5. This happens (simply?) because
  we set the prior uncertainty to 0.5. 
@@ -489,11 +489,11 @@ it does mean that users of eoldas must bear in mind the consequences of setting 
 
 The original and forward modelled MODIS data resulting from this are:
 
-.. image:: ../output/modis/MODIS_WW_1_A_1_fwd_c_plot_y.png
+.. image:: ../output/modis/MODIS_WW_1_A_1.fwd_c.plot.y.png
 
 and the MERIS:
 
-.. image:: ../output/meris/MERIS_WW_1_A_1_fwd_c_plot_y.png
+.. image:: ../output/meris/MERIS_WW_1_A_1.fwd_c.plot.y.png 
 
 The reproduction of the observations is clearly not wonderful, indicating some other issues
 with the data or model, but at least we have demonstrated how a prior can be used in eoldas to help

@@ -9,7 +9,7 @@ Welcome to EOLDAS user guide's documentation!
 Contents:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
 
    eoldas_guide.rst
    example1.rst
