@@ -16,7 +16,7 @@ example in the EO-LDAS tutorial (`www1 <http://jgomezdans.github.com/eoldas_exam
 concept of using regularisation (by a zero-order process model) to  smooth and 
 interpolate a noisy data sequence (that we suppose to be NDVI). The data in the 
 experiment are synthetic, i.e. generated from a known truth.
-The experiment is run from a python code  (`www1 <http://github.com/jgomezdans/eoldas_examples/>`_) that generates the synthetic 
+The experiment is run from a python code  (`www2 <http://github.com/jgomezdans/eoldas_examples/solve_eoldas_identity.py>`_) that generates the synthetic 
 dataset, adds a significant amount of noise (standard deviation 0.15). Correlated gaps 
 (mimicking clouds) are introduced into the data. In the example given 33% of the 
 observations are removed. The results are shown in the figure below.                                                        
@@ -26,7 +26,7 @@ observations are removed. The results are shown in the figure below.
 
    Fig 1: Smoothing a noisy time series with temporal DA.
 
-The blue dots show the input data, with associated uncertainty (1.95 sigma, i.e. the 
+The blue dots show the input data, with associated uncertainty (1.95 :math:`\sigma`, i.e. the 
 95% confidence interval (C.I)). The ‘truth’ a half sine wave with a flat section is 
 shown as the green line. The retrieved state is shown as the red line (mean) and grey 
 bounds (95% C.I.). This is a suitable example to demonstrate the principles of 
@@ -47,7 +47,7 @@ command line is set as:
 
 [CODE]
 
-and the (generic) configuration file given in www3. In the configuration file, we 
+and the (generic) configuration file given in (`www3 <https://github.com/jgomezdans/eoldas_examples/config_files/Identity.conf>`_. In the configuration file, we 
 declare the ‘location’ specification to be ‘time’ and specify the parameters we wish to 
 solve for (NDVI here).
 
@@ -80,11 +80,10 @@ as time, we could simply state that it is a transect in space and all of the sam
 and conclusions would apply. In the spatial sense, we might consider this to be quite 
 similar to what is done in optimal spatial interpolation schemes such as kriging or 
 regression kriging (where some low order model is fitted and the difference constraint 
-operates on the residuals of that model) (www4).
+operates on the residuals of that model) (`www4 <http://spatial-analyst.net/wiki/index.php?title=Regression-kriging_guide>`_).
 
-Python code for performing a spatial DA is given in www5. It is very much based on 
-that for the temporal DA discussed above, but now we generate a synthetic dataset in 
-two dimensions:
+Python code for performing a spatial DA is given in `www5 <https://github.com/jgomezdans/eoldas_examples/solve_eoldas_spatial.py>`_. It is very much based on 
+that for the temporal DA discussed above, but now we generate a synthetic dataset in two dimensions:
 
 .. figure:: NDVI_Identity_spatial.params_clean.png
     
@@ -103,7 +102,7 @@ The input dataset then is shown in figure 3.
    Fig. 3: Sampled synthetic 2D (spatial) dataset
 
 We can again suppose the ‘holes’ in the observations to be representative of clouds.
-The configuration file for this experiment is given in www6.
+The configuration file for this experiment is given in `www6 <https://github.com/jgomezdans/eoldas_examples/config_files/IdentitySpatial.conf>`.
 In setting up a spatial DA in EO-LDAS, we declare the location to be ‘row’ and ‘col’:
     
     [CODE]
