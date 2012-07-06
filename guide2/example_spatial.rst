@@ -16,7 +16,7 @@ example in the EO-LDAS tutorial (`www1 <http://jgomezdans.github.com/eoldas_exam
 concept of using regularisation (by a zero-order process model) to  smooth and 
 interpolate a noisy data sequence (that we suppose to be NDVI). The data in the 
 experiment are synthetic, i.e. generated from a known truth.
-The experiment is run from a python code  (`www2 <http://github.com/jgomezdans/eoldas_examples/solve_eoldas_identity.py>`_) that generates the synthetic 
+The experiment is run from a python code  (`www2 <http://github.com/jgomezdans/eoldas_examples/blob/master/solve_eoldas_identity.py>`_) that generates the synthetic 
 dataset, adds a significant amount of noise (standard deviation 0.15). Correlated gaps 
 (mimicking clouds) are introduced into the data. In the example given 33% of the 
 observations are removed. The results are shown in the figure below.                                                        
@@ -47,7 +47,7 @@ command line is set as:
 
 [CODE]
 
-and the (generic) configuration file given in (`www3 <https://github.com/jgomezdans/eoldas_examples/config_files/Identity.conf>`_. In the configuration file, we 
+and the (generic) configuration file given in (`www3 <https://github.com/jgomezdans/eoldas_examples/blob/master/config_files/Identity.conf>`_. In the configuration file, we 
 declare the ‘location’ specification to be ‘time’ and specify the parameters we wish to 
 solve for (NDVI here).
 
@@ -82,7 +82,7 @@ similar to what is done in optimal spatial interpolation schemes such as kriging
 regression kriging (where some low order model is fitted and the difference constraint 
 operates on the residuals of that model) (`www4 <http://spatial-analyst.net/wiki/index.php?title=Regression-kriging_guide>`_).
 
-Python code for performing a spatial DA is given in `www5 <https://github.com/jgomezdans/eoldas_examples/solve_eoldas_spatial.py>`_. It is very much based on 
+Python code for performing a spatial DA is given in `www5 <https://github.com/jgomezdans/eoldas_examples/blob/master/solve_eoldas_spatial.py>`_. It is very much based on 
 that for the temporal DA discussed above, but now we generate a synthetic dataset in two dimensions:
 
 .. figure:: NDVI_Identity_spatial.params_clean.png
@@ -102,7 +102,7 @@ The input dataset then is shown in figure 3.
    Fig. 3: Sampled synthetic 2D (spatial) dataset
 
 We can again suppose the ‘holes’ in the observations to be representative of clouds.
-The configuration file for this experiment is given in `www6 <https://github.com/jgomezdans/eoldas_examples/config_files/IdentitySpatial.conf>`.
+The configuration file for this experiment is given in `www6 <https://github.com/jgomezdans/eoldas_examples/blob/master/config_files/IdentitySpatial.conf>`.
 In setting up a spatial DA in EO-LDAS, we declare the location to be ‘row’ and ‘col’:
     
     [CODE]
@@ -169,7 +169,7 @@ a higher resolution dataset. To account for the fact that the sample observation
 then be used multiple times within the existing DA, we can simply inflate the 
 apparent uncertainty of each sample that we load.
 
-Code to achieve this is given in `www7 <https://github.com/jgomezdans/eoldas_examples/solve_eoldas_spatial2a.py>`_. In this, we generate two datasets, one at ‘full’ 
+Code to achieve this is given in `www7 <https://github.com/jgomezdans/eoldas_examples/blob/master/solve_eoldas_spatial2a.py>`_. In this, we generate two datasets, one at ‘full’ 
 resolution, with an uncertainty of 0.15 and with 33% of the observations missing, and 
 one at a linear scale of 1/4 th, i.e. where 16 pixels at high resolution represent one pixel 
 at coarse resolution. The filter window size used to correlate the data gaps is 3 in this 
@@ -198,7 +198,7 @@ is no apparent bias in the results (figure 8f), and effective use is made of bot
 high- and low-resolution datasets to provide a viable (and in this case accurate)
 posterior estimate (figure 8b).
 
-In a second example, `www8 <https://github.com/jgomezdans/eoldas_examples/solve_eoldas_spatial2b.py>`_, we consider the case where 2/3 of the data are missing,
+In a second example, `www8 <https://github.com/jgomezdans/eoldas_examples/blob/master/solve_eoldas_spatial2b.py>`_, we consider the case where 2/3 of the data are missing,
 with a larger filter size (6) resulting in larger gaps. The results are clearly of
 somewhat lower quality, but this is reflected in the uncertainties. The uncertainty map
 (figure 10e) clearly demonstrates where the sampling in the input data (in both high
@@ -219,7 +219,7 @@ original data from noisy multi-resolution datasets with large gaps.
     Fig. 11: Transect through row 13 of results for 2/3 data missing
     
     
-In a final example (`www9 <https://github.com/jgomezdans/eoldas_examples/solve_eoldas_spatial2c.py>`_), we remove 2/3rd of the samples from the high-resolution
+In a final example (`www9 <https://github.com/jgomezdans/eoldas_examples/blob/master/solve_eoldas_spatial2c.py>`_), we remove 2/3rd of the samples from the high-resolution
 image, but only 1/3rd of the lower resolution data. This is an attempt to mimic the
 impact of higher frequency low spatial observations with occasional high-resolution
 data (though we do not directly consider the time dimension in this example). In this
