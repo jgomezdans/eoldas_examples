@@ -14,6 +14,8 @@ Contents:
    eoldas_guide.rst
    example1.rst
    example2.rst
+   example_sentinel2.rst
+   example_spatial.rst
 
 Indices and tables
 ==================
