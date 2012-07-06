@@ -115,11 +115,8 @@ def prepare(nr=50,nc=100,noise=0.15,n_scale=1,n_per=1,obs_off=0.33,model_order=1
 if __name__ == "__main__":
     import sys,tempfile
     this = sys.argv[0]
-    sys.path.append(this + '../system_confs')
-    sys.path.append(this + '../confs')
-    sys.path.append(this + '../eoldaslib')
-    sys.path.append(this + '../bin')
-    import eoldaslib as eoldas
+    
+    import eoldas
 
     # SD of noise
     noise=0.15
