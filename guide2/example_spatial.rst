@@ -169,7 +169,7 @@ a higher resolution dataset. To account for the fact that the sample observation
 then be used multiple times within the existing DA, we can simply inflate the 
 apparent uncertainty of each sample that we load.
 
-Code to achieve this is given in www7. In this, we generate two datasets, one at ‘full’ 
+Code to achieve this is given in `www7 <https://github.com/jgomezdans/eoldas_examples/solve_eoldas_spatial2a.py>`_. In this, we generate two datasets, one at ‘full’ 
 resolution, with an uncertainty of 0.15 and with 33% of the observations missing, and 
 one at a linear scale of 1/4 th, i.e. where 16 pixels at high resolution represent one pixel 
 at coarse resolution. The filter window size used to correlate the data gaps is 3 in this 
@@ -198,7 +198,7 @@ is no apparent bias in the results (figure 8f), and effective use is made of bot
 high- and low-resolution datasets to provide a viable (and in this case accurate)
 posterior estimate (figure 8b).
 
-In a second example, www8, we consider the case where 2/3 of the data are missing,
+In a second example, `www8 <https://github.com/jgomezdans/eoldas_examples/solve_eoldas_spatial2b.py>`_, we consider the case where 2/3 of the data are missing,
 with a larger filter size (6) resulting in larger gaps. The results are clearly of
 somewhat lower quality, but this is reflected in the uncertainties. The uncertainty map
 (figure 10e) clearly demonstrates where the sampling in the input data (in both high
@@ -219,7 +219,7 @@ original data from noisy multi-resolution datasets with large gaps.
     Fig. 11: Transect through row 13 of results for 2/3 data missing
     
     
-In a final example (www9), we remove 2/3rd of the samples from the high-resolution
+In a final example (`www9 <https://github.com/jgomezdans/eoldas_examples/solve_eoldas_spatial2c.py>`_), we remove 2/3rd of the samples from the high-resolution
 image, but only 1/3rd of the lower resolution data. This is an attempt to mimic the
 impact of higher frequency low spatial observations with occasional high-resolution
 data (though we do not directly consider the time dimension in this example). In this
