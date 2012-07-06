@@ -61,8 +61,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Radiative Transfer'
-copyright = u'2009, J Gomez-Dans, T Quaife'
+project = u"EOLDAS Users' Guide"
+copyright = u'2012, P Lewis and J Gomez-Dans'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -128,7 +128,7 @@ html_theme = 'haiku'
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
-html_theme_options = {"full_logo":"NCEO_logo_lrg.jpg"}
+html_theme_options = {"full_logo":"eoldas_logos.png"}
 
 # Add any paths that contain custom themes here, relative to this directory.
 #html_theme_path = []
@@ -190,7 +190,7 @@ html_static_path = ['.static']
 #html_file_suffix = ''
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'RadiativeTransferdoc'
+htmlhelp_basename = 'EOLDAS_UsersGuide'
 
 
 # -- Options for LaTeX output --------------------------------------------------
