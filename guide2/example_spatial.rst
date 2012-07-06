@@ -12,11 +12,11 @@ demonstrate the spatial capabilities of the tool and to show how multi-(spatial)
 resolution DA can be achieved.
 
 To illustrate these concepts, we develop from the regularisation of NDVI data 
-example in the EO-LDAS tutorial (www1).  In this example, we demonstrate the 
+example in the EO-LDAS tutorial (`www1 <http://jgomezdans.github.com/eoldas_examples>`_).  In this example, we demonstrate the 
 concept of using regularisation (by a zero-order process model) to  smooth and 
 interpolate a noisy data sequence (that we suppose to be NDVI). The data in the 
 experiment are synthetic, i.e. generated from a known truth.
-The experiment is run from a python code  (www2) that generates the synthetic 
+The experiment is run from a python code  (`www1 <http://github.com/jgomezdans/eoldas_examples/>`_) that generates the synthetic 
 dataset, adds a significant amount of noise (standard deviation 0.15). Correlated gaps 
 (mimicking clouds) are introduced into the data. In the example given 33% of the 
 observations are removed. The results are shown in the figure below.                                                        
@@ -156,3 +156,91 @@ in the smoothness term. If you compare the high NDVI values in figures 2 and 4 y
 can see this same issue, although it is relatively minor in the grand scheme of things.
 Certainly the 95% C.I. covers the extent of the true data, so the C.I. is likely slightly 
 over-estimated here.
+
+
+
+Multi-resolution data assimilation
+======================================
+
+We can proceed from this example to consider multi-spatial resolution DA within 
+EO-LDAS. Although we do not have any sensor spatial transfer functions within the 
+prototype, we can demonstrate and explore the principles within the existing tool. 
+This can be done by simply mapping a coarser spatial resolution dataset to the grid of 
+a higher resolution dataset. To account for the fact that the sample observations will 
+then be used multiple times within the existing DA, we can simply inflate the 
+apparent uncertainty of each sample that we load.
+
+Code to achieve this is given in www7. In this, we generate two datasets, one at ‘full’ 
+resolution, with an uncertainty of 0.15 and with 33% of the observations missing, and 
+one at a linear scale of 1/4 th, i.e. where 16 pixels at high resolution represent one pixel 
+at coarse resolution. The filter window size used to correlate the data gaps is 3 in this 
+example (larger filter sizes will result in larger gaps). The uncertainty in the coarse 
+resolution data is 0.0375, so less than that at high resolution (by a factor of 4) but then 
+we re-inflate it to an apparent uncertainty of 0.15 when applying the same (coarse) 
+resolution sample pixel over the high-resolution grid.
+
+.. figure:: NDVI_multires_panel1.png
+
+    Fig. 8: Results of multi-scale analysis for 1/3 data missing
+
+.. figure:: NDVI_Identity_spatial2.params_transect.png
+
+    Fig. 9: Transect through row 13 of results for 1/3 data missing
+                
+As in other examples in EO-LDAS, we use separate observation operators for the
+different data streams, though this is largely for convenience in this case as the both
+data sets are associated with Identity operators in this case.
+These results demonstrate the ability of the code to achieve a multi-resolution DA
+(albeit with a simple Identity observation operator here). With 1/3rd of the samples
+missing, the results are very good, although we note that the specifics of the ‘gap’
+algorithm used here mean that gaps tend to be created at the edge of the image first
+(this is to do with how a random noise field is filtered to create the gappiness). There
+is no apparent bias in the results (figure 8f), and effective use is made of both the
+high- and low-resolution datasets to provide a viable (and in this case accurate)
+posterior estimate (figure 8b).
+
+In a second example, www8, we consider the case where 2/3 of the data are missing,
+with a larger filter size (6) resulting in larger gaps. The results are clearly of
+somewhat lower quality, but this is reflected in the uncertainties. The uncertainty map
+(figure 10e) clearly demonstrates where the sampling in the input data (in both high
+and low resolution datasets) is poor (light blue). Unsurprisingly, where we have
+samples in both high and low spatial resolution datasets, the uncertainty is lowest.
+Given the amount of extrapolation in this exercise, the results are remarkably good.
+There is no apparent bias in the results (visually, from figure 10f). The transect in
+figure 11 shows that though the reconstruction is still perhaps a little noisy (it could
+most likely tolerate a higher gamma) it provides a faithful reconstruction of the
+original data from noisy multi-resolution datasets with large gaps.
+     
+.. figure:: NDVI_multires_panel2.png
+        
+    Fig. 10: Results of multi-scale analysis for 2/3 data missing
+    
+.. figure:: NDVI_Identity_spatial.params_transect.png
+    
+    Fig. 11: Transect through row 13 of results for 2/3 data missing
+    
+    
+In a final example (www9), we remove 2/3rd of the samples from the high-resolution
+image, but only 1/3rd of the lower resolution data. This is an attempt to mimic the
+impact of higher frequency low spatial observations with occasional high-resolution
+data (though we do not directly consider the time dimension in this example). In this
+case, we have only sparse coverage at high resolution, but good coverage of most of
+the major features at low resolution. There is minimal ‘blockiness’ in the DA result in
+figure 12b, but even this does not seem very apparent in the transect (figure 13). The
+better coverage provided by the low resolution data produces much less scatter when
+comparing to the original signal (compare figures 10f and 12f). The result compares
+very favourably with that in figure 8 which had twice as many high resolution
+samples.
+
+.. figure:: NDVI_multires_panel3.png
+        
+    Fig. 12: Results of multi-scale analysis for 2/3 data missing in the high resolution and 1/3 missing in the low resolution.
+    
+.. figure:: NDVI_Identity_spatial.params_transect.png
+    
+    Fig. 13: Transect through row 13 of results for 2/3 data missing in the high resolution and 1/3 missing in the low resolution.
+
+    
+    
+            
+            
